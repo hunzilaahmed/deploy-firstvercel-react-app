@@ -5,6 +5,7 @@ import Card from "./Card";
 const Product = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+ 
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -21,7 +22,18 @@ const Product = () => {
 
   return (
     <div className=" flex flex-wrap gap-5 justify-center">
-      {error ? (
+      {
+data ? (
+  <>
+  {data.map((product) => (
+            <Card product={product} />
+          ))}
+  </>
+):<>
+<div>Loading...</div>
+</>
+      }
+      {/* {error ? (
         <div>Error: {error}</div>
       ) : !data ? (
         <div>Loading...</div>
@@ -31,7 +43,8 @@ const Product = () => {
             <Card product={product} />
           ))}
         </>
-      )}
+      )} */}
+
     </div>
   );
 };
